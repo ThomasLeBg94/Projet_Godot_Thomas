@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6jpy5npr0dfk"]
+
+[ext_resource type="Script" uid="uid://k4h5uri72pxm" path="res://Scripts/missile_buff.gd" id="1_jx26q"]
+[ext_resource type="Shader" uid="uid://bvuqdx7hflwn8" path="res://Scenes/bouclier.gdshader" id="2_neq01"]
+[ext_resource type="Texture2D" uid="uid://b1lsm6edw8s26" path="res://Images/Tiakola.jpg" id="3_i7xrb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ml5nq"]
+shader = ExtResource("2_neq01")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jx26q"]
+radius = 420.476
+
+[node name="Missile_Buff" type="Area2D"]
+scale = Vector2(0.05, 0.05)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_jx26q")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.47451)
+material = SubResource("ShaderMaterial_ml5nq")
+offset_left = -400.0
+offset_top = -405.0
+offset_right = 404.0
+offset_bottom = 399.0
+texture = ExtResource("3_i7xrb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jx26q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

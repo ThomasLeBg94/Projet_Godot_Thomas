@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cktxbo1evmj3"]
+
+[ext_resource type="Script" uid="uid://djac2lfh77o0j" path="res://Scripts/ennemi_1.gd" id="1_aa601"]
+[ext_resource type="Texture2D" uid="uid://dirremekqo8y2" path="res://Images/Negribou.png" id="1_jjn1c"]
+
+[sub_resource type="SystemFont" id="SystemFont_aa601"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_m1cak"]
+font = SubResource("SystemFont_aa601")
+font_size = 20
+
+[node name="Ennemi1" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_aa601")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_jjn1c")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-32, -35, 33, -35, 33, 33, -32, 33)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -15.0
+offset_top = -42.0
+offset_right = 60.0
+offset_bottom = -14.0
+scale = Vector2(0.4, 0.4)
+text = "100"
+label_settings = SubResource("LabelSettings_m1cak")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

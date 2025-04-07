@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=3 uid="uid://dn186l2nb8op0"]
+
+[ext_resource type="Script" uid="uid://cvesdqxqfit8i" path="res://Scripts/main.gd" id="1_idj7w"]
+[ext_resource type="Texture2D" uid="uid://b5mxe3jk2mxau" path="res://Images/Space.jpg" id="2_kln2b"]
+[ext_resource type="PackedScene" uid="uid://cktxbo1evmj3" path="res://Scenes/ennemi_1.tscn" id="2_pbw6q"]
+[ext_resource type="PackedScene" uid="uid://b38tk3obxik8t" path="res://Scenes/Player.tscn" id="3_kln2b"]
+[ext_resource type="PackedScene" uid="uid://16j86alteq64" path="res://Scenes/bouclier.tscn" id="3_v1gob"]
+[ext_resource type="PackedScene" uid="uid://c6jpy5npr0dfk" path="res://Scenes/missile_buff.tscn" id="4_50glp"]
+[ext_resource type="PackedScene" uid="uid://bw26uimkdvdbn" path="res://Scenes/ui.tscn" id="5_pbw6q"]
+[ext_resource type="PackedScene" uid="uid://dhvtafjmqmq50" path="res://Scenes/pioupiou_buff.tscn" id="5_vy5pj"]
+[ext_resource type="PackedScene" uid="uid://dq8r2hfbip17r" path="res://Scenes/laser_buff.tscn" id="6_bmxlf"]
+[ext_resource type="PackedScene" uid="uid://c36jdgrsgq20f" path="res://Scenes/heart_buff.tscn" id="7_4kpch"]
+[ext_resource type="PackedScene" uid="uid://5v7qx3ebg7x6" path="res://Scenes/speed_buff.tscn" id="8_4kpch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kln2b"]
+size = Vector2(6, 961.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgh2o"]
+size = Vector2(735, 7)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_idj7w")
+ennemi1_scene = ExtResource("2_pbw6q")
+bouclier_scene = ExtResource("3_v1gob")
+missile_buff_scene = ExtResource("4_50glp")
+pioupiou_buff_scene = ExtResource("5_vy5pj")
+laser_buff_scene = ExtResource("6_bmxlf")
+coeur_buff_scene = ExtResource("7_4kpch")
+speed_buff_scene = ExtResource("8_4kpch")
+
+[node name="Space" type="Sprite2D" parent="."]
+position = Vector2(360, 470)
+rotation = 1.5708
+scale = Vector2(0.515462, 0.7)
+texture = ExtResource("2_kln2b")
+
+[node name="SpawnBuffTimer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="WaveTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Ennemis" type="Node2D" parent="."]
+
+[node name="Buffs" type="Node2D" parent="."]
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("3_kln2b")]
+position = Vector2(360, 880)
+
+[node name="Bordure" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordure"]
+position = Vector2(0, 463.063)
+shape = SubResource("RectangleShape2D_kln2b")
+one_way_collision_margin = 0.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bordure"]
+position = Vector2(722, 467.125)
+shape = SubResource("RectangleShape2D_kln2b")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bordure"]
+position = Vector2(357.5, 0)
+shape = SubResource("RectangleShape2D_rgh2o")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bordure"]
+position = Vector2(360, 940)
+shape = SubResource("RectangleShape2D_rgh2o")
+
+[node name="UI" parent="." instance=ExtResource("5_pbw6q")]
+
+[connection signal="timeout" from="SpawnBuffTimer" to="." method="buff_generator"]
+[connection signal="timeout" from="WaveTimer" to="." method="start_wave"]

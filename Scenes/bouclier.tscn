@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://16j86alteq64"]
+
+[ext_resource type="Texture2D" uid="uid://cx6g88uoibyl5" path="res://Images/Fave.jpg" id="1_hfudn"]
+[ext_resource type="Shader" uid="uid://bvuqdx7hflwn8" path="res://Scenes/bouclier.gdshader" id="1_lxt5p"]
+[ext_resource type="Script" uid="uid://bh0ta6m7e4ex6" path="res://Scripts/bouclier.gd" id="1_ml5nq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ml5nq"]
+shader = ExtResource("1_lxt5p")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lxt5p"]
+radius = 440.0
+
+[node name="Bouclier" type="Area2D"]
+scale = Vector2(0.05, 0.05)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_ml5nq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.47451)
+material = SubResource("ShaderMaterial_ml5nq")
+offset_left = -400.0
+offset_top = -405.0
+offset_right = 404.0
+offset_bottom = 399.0
+texture = ExtResource("1_hfudn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lxt5p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

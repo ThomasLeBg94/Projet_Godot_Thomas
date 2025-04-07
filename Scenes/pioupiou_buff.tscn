@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhvtafjmqmq50"]
+
+[ext_resource type="Script" uid="uid://c2jf6kdbft44" path="res://Scripts/pioupiou_buff.gd" id="1_dmkwl"]
+[ext_resource type="Shader" uid="uid://bvuqdx7hflwn8" path="res://Scenes/bouclier.gdshader" id="2_x3dbo"]
+[ext_resource type="Texture2D" uid="uid://ff2j0edfpfh1" path="res://Images/Hugo.webp" id="3_dmkwl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ml5nq"]
+shader = ExtResource("2_x3dbo")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmkwl"]
+radius = 460.0
+
+[node name="Pioupiou_Buff" type="Area2D"]
+scale = Vector2(0.05, 0.05)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_dmkwl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.47451)
+material = SubResource("ShaderMaterial_ml5nq")
+offset_left = -440.0
+offset_top = -440.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_dmkwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dmkwl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

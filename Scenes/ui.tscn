@@ -1,0 +1,167 @@
+[gd_scene load_steps=21 format=3 uid="uid://bw26uimkdvdbn"]
+
+[ext_resource type="Script" uid="uid://dj5l7vshdehic" path="res://Scripts/ui.gd" id="1_8xaeg"]
+[ext_resource type="Shader" uid="uid://bvuqdx7hflwn8" path="res://Scenes/bouclier.gdshader" id="2_nf4gj"]
+[ext_resource type="Texture2D" uid="uid://cx6g88uoibyl5" path="res://Images/Fave.jpg" id="3_2246s"]
+[ext_resource type="Texture2D" uid="uid://b1lsm6edw8s26" path="res://Images/Tiakola.jpg" id="4_q7pk6"]
+[ext_resource type="Texture2D" uid="uid://ff2j0edfpfh1" path="res://Images/Hugo.webp" id="5_m78vo"]
+[ext_resource type="Texture2D" uid="uid://oj8flpwf8p60" path="res://Images/ManFace.png" id="6_smcll"]
+[ext_resource type="Texture2D" uid="uid://b3umyi25sc0na" path="res://Images/CrocsMcqueen.webp" id="7_ryf15"]
+
+[sub_resource type="SystemFont" id="SystemFont_uo3pn"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ttqiv"]
+font = SubResource("SystemFont_uo3pn")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_jxero"]
+font_size = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q7pk6"]
+shader = ExtResource("2_nf4gj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_nf4gj"]
+font_size = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smcll"]
+shader = ExtResource("2_nf4gj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ryf15"]
+font_size = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmixe"]
+shader = ExtResource("2_nf4gj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_nt8jn"]
+font_size = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nt8jn"]
+shader = ExtResource("2_nf4gj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_g0wmg"]
+font_size = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0wmg"]
+shader = ExtResource("2_nf4gj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_4vbiv"]
+font_size = 20
+
+[node name="UI" type="CanvasLayer" groups=["UI"]]
+script = ExtResource("1_8xaeg")
+
+[node name="ScoreContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.333
+anchor_right = 0.667
+anchor_bottom = 0.03
+offset_left = 0.23999
+offset_right = -0.240051
+offset_bottom = 26.8
+grow_horizontal = 2
+
+[node name="Score" type="Label" parent="ScoreContainer"]
+layout_mode = 2
+text = "Score : 0"
+label_settings = SubResource("LabelSettings_ttqiv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wave" type="Label" parent="ScoreContainer"]
+layout_mode = 2
+text = "Wave : 1"
+label_settings = SubResource("LabelSettings_jxero")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="PlayerContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.933
+anchor_right = 0.194
+anchor_bottom = 0.983
+offset_left = -0.120001
+offset_top = -0.0200195
+offset_right = 0.319992
+offset_bottom = -0.0200195
+grow_vertical = 0
+
+[node name="HeartContainer" type="HBoxContainer" parent="PlayerContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="BuffContainer" type="HBoxContainer" parent="PlayerContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="BouclierBuff" type="TextureRect" parent="PlayerContainer/BuffContainer"]
+material = SubResource("ShaderMaterial_q7pk6")
+layout_mode = 2
+texture = ExtResource("3_2246s")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="BouclierLabel" type="Label" parent="PlayerContainer/BuffContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_nf4gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MissileBuff" type="TextureRect" parent="PlayerContainer/BuffContainer"]
+modulate = Color(1, 1, 1, 0.47451)
+material = SubResource("ShaderMaterial_smcll")
+layout_mode = 2
+texture = ExtResource("4_q7pk6")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MissileLabel" type="Label" parent="PlayerContainer/BuffContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ryf15")
+
+[node name="PioupiouBuff" type="TextureRect" parent="PlayerContainer/BuffContainer"]
+modulate = Color(1, 1, 1, 0.47451)
+material = SubResource("ShaderMaterial_mmixe")
+layout_mode = 2
+texture = ExtResource("5_m78vo")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="PioupiouLabel" type="Label" parent="PlayerContainer/BuffContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_nt8jn")
+
+[node name="LaserBuff" type="TextureRect" parent="PlayerContainer/BuffContainer"]
+modulate = Color(1, 1, 1, 0.47451)
+material = SubResource("ShaderMaterial_nt8jn")
+layout_mode = 2
+texture = ExtResource("6_smcll")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="LaserLabel" type="Label" parent="PlayerContainer/BuffContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_g0wmg")
+
+[node name="SpeedBuff" type="TextureRect" parent="PlayerContainer/BuffContainer"]
+modulate = Color(1, 1, 1, 0.47451)
+material = SubResource("ShaderMaterial_g0wmg")
+layout_mode = 2
+texture = ExtResource("7_ryf15")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="SpeedLabel" type="Label" parent="PlayerContainer/BuffContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_4vbiv")
+
+[node name="ScoreTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

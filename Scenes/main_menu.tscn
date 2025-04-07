@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://cctkj0w0qg8w7"]
+
+[ext_resource type="Script" uid="uid://b5o3dt6fajysv" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://dn186l2nb8op0" path="res://Scenes/Main.tscn" id="2_opfnp"]
+[ext_resource type="Texture2D" uid="uid://b7msca2vhxelm" path="res://Images/BoutonContinue.png" id="3_cp0ys"]
+[ext_resource type="Texture2D" uid="uid://h7xjwh4e3yk5" path="res://Images/BoutonQuit.png" id="4_yhxw7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_48xlc"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ehe0"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_ce3w2"]
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_n45e2"]
+font_size = 18
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ehe0")
+level_scene = ExtResource("2_opfnp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.029
+anchor_right = 1.048
+anchor_bottom = 1.031
+offset_left = -0.32
+offset_top = -36.0
+offset_right = -0.160156
+offset_bottom = -0.47998
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.896294
+anchor_top = 0.154457
+anchor_right = 1.82529
+anchor_bottom = 1.08746
+offset_left = -724.966
+offset_top = -5.17709
+offset_right = -732.898
+offset_bottom = 49.1351
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Continue" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_cp0ys")
+icon_alignment = 1
+
+[node name="Quit" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("4_yhxw7")
+icon_alignment = 1
+
+[node name="MainMenu" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -217.5
+offset_top = 100.0
+offset_right = 217.5
+offset_bottom = 183.0
+grow_horizontal = 2
+text = "Menu Principal"
+label_settings = SubResource("LabelSettings_48xlc")
+horizontal_alignment = 1
+
+[node name="Controles" type="Label" parent="ColorRect"]
+layout_mode = 2
+offset_left = 170.0
+offset_top = 230.0
+offset_right = 605.0
+offset_bottom = 272.0
+text = "Contrôles :"
+label_settings = SubResource("LabelSettings_1ehe0")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="ColorRect/Controles"]
+layout_mode = 0
+offset_left = -51.0
+offset_top = 78.0
+offset_right = 465.0
+offset_bottom = 343.0
+text = "Bouger : Z/Q/S/D ou FLèches directionnelles
+Arme principale : Espace/LMB/E
+Missiles : Shift/RMB/R
+Laser = Alt/MMB/T
+Dodge = A"
+label_settings = SubResource("LabelSettings_ce3w2")
+
+[node name="Label2" type="Label" parent="ColorRect/Controles"]
+layout_mode = 0
+offset_left = -140.8
+offset_top = 300.0
+offset_right = 562.2
+offset_bottom = 359.0
+text = "Appuyez sur Entrée ou cliquez sur le bouton \"Continue pour commencer.
+Appuyez sur Echap ou cliquez sur le bouton \"Quit\" pour fermer le jeu."
+label_settings = SubResource("LabelSettings_n45e2")
+horizontal_alignment = 1

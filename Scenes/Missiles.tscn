@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://sbqswvaj4rq4"]
+
+[ext_resource type="Texture2D" uid="uid://bdu0ix3qd50ui" path="res://Images/Gourde.webp" id="1_fbtsp"]
+[ext_resource type="Script" uid="uid://cnaekvul31f26" path="res://Scripts/missiles.gd" id="1_itm7e"]
+
+[node name="Missiles" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_itm7e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.436332
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_fbtsp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-9, -34, 12, -34, 12, 32, -9, 32)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

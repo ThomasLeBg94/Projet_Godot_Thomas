@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://b38tk3obxik8t"]
+
+[ext_resource type="Script" uid="uid://cy4glu1vummwp" path="res://Scripts/player.gd" id="1_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://vsl8ad4qx1w5" path="res://Images/Ship.png" id="1_rpqav"]
+[ext_resource type="PackedScene" uid="uid://c1d3dmjiibyam" path="res://Scenes/piou_piou.tscn" id="2_dewec"]
+[ext_resource type="Texture2D" uid="uid://p7od71fxwrie" path="res://Images/IFrame_Ship.png" id="3_gntrk"]
+[ext_resource type="PackedScene" uid="uid://sbqswvaj4rq4" path="res://Scenes/Missiles.tscn" id="3_nn08x"]
+[ext_resource type="PackedScene" uid="uid://b06vwfunwl2hw" path="res://Scenes/laser.tscn" id="4_52ee3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dewec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rpqav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gntrk")
+}],
+"loop": true,
+"name": &"IFrame",
+"speed": 4.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 9
+collision_mask = 11
+script = ExtResource("1_kyqiw")
+pioupiou_scene = ExtResource("2_dewec")
+missile_scene = ExtResource("3_nn08x")
+laser_scene = ExtResource("4_52ee3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_dewec")
+animation = &"IFrame"
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.1, 0.1)
+polygon = PackedVector2Array(-820, 850, 820, 850, 820, -770, -820, -770)
+
+[node name="PiouPiou" type="Marker2D" parent="."]
+position = Vector2(0, -79)
+
+[node name="Missile1" type="Marker2D" parent="."]
+position = Vector2(-57, 24)
+
+[node name="Missile2" type="Marker2D" parent="."]
+position = Vector2(57, 24)
+
+[node name="Laser" type="Marker2D" parent="."]
+position = Vector2(0, -79)
+
+[node name="Bouclier" type="Marker2D" parent="."]
+
+[node name="PiouPiouCooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="MissilesCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="LaserCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="BouclierCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="DodgeCooldown" type="Timer" parent="."]

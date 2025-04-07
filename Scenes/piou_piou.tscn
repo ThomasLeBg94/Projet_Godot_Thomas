@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1d3dmjiibyam"]
+
+[ext_resource type="Script" uid="uid://cvipoodspovqt" path="res://Scripts/piou_piou.gd" id="1_8jtn5"]
+[ext_resource type="Texture2D" uid="uid://ckvtmki5qxjh1" path="res://Images/Roblox.png" id="1_yela8"]
+
+[node name="PiouPiou" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_8jtn5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.309
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_yela8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(48, -47, 48, 45, -50, 45, -50, -47)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

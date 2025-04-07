@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq8r2hfbip17r"]
+
+[ext_resource type="Script" uid="uid://br1yy8psef8q4" path="res://Scripts/laser_buff.gd" id="1_p5j1a"]
+[ext_resource type="Shader" uid="uid://bvuqdx7hflwn8" path="res://Scenes/bouclier.gdshader" id="2_oa8na"]
+[ext_resource type="Texture2D" uid="uid://oj8flpwf8p60" path="res://Images/ManFace.png" id="3_y3r5v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ml5nq"]
+shader = ExtResource("2_oa8na")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5j1a"]
+radius = 361.248
+
+[node name="Laser_Buff" type="Area2D"]
+scale = Vector2(0.05, 0.05)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_p5j1a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.47451)
+material = SubResource("ShaderMaterial_ml5nq")
+offset_left = -400.0
+offset_top = -405.0
+offset_right = 404.0
+offset_bottom = 399.0
+texture = ExtResource("3_y3r5v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p5j1a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

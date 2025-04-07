@@ -1,0 +1,79 @@
+[gd_scene load_steps=15 format=3 uid="uid://b06vwfunwl2hw"]
+
+[ext_resource type="Texture2D" uid="uid://wcd5sy3fudk3" path="res://Images/Laser/Laser0-removebg-preview.png" id="1_dekdl"]
+[ext_resource type="Script" uid="uid://dy107qr7vjmrv" path="res://Scripts/laser.gd" id="1_mpln2"]
+[ext_resource type="Texture2D" uid="uid://bqkgbag0p7tf8" path="res://Images/Laser/Laser1-removebg-preview.png" id="2_mpln2"]
+[ext_resource type="Texture2D" uid="uid://dtxle8m2cfd87" path="res://Images/Laser/Laser2-removebg-preview.png" id="3_prdx0"]
+[ext_resource type="Texture2D" uid="uid://by1d6jjx65ond" path="res://Images/Laser/Laser3-removebg-preview.png" id="4_ogfxl"]
+[ext_resource type="Texture2D" uid="uid://cwxalvor3g6sb" path="res://Images/Laser/Laser4-removebg-preview.png" id="5_dx14c"]
+[ext_resource type="Texture2D" uid="uid://bvm1s072gkk4o" path="res://Images/Laser/Laser5-removebg-preview.png" id="6_p0edw"]
+[ext_resource type="Texture2D" uid="uid://bcp6702iuxghf" path="res://Images/Laser/Laser6-removebg-preview.png" id="7_2waeh"]
+[ext_resource type="Texture2D" uid="uid://clbh8imiwcvqv" path="res://Images/Laser/Laser7-removebg-preview.png" id="8_o2lbq"]
+[ext_resource type="Texture2D" uid="uid://5skwjnnpn1yq" path="res://Images/Laser/Laser8-removebg-preview.png" id="9_2t7xy"]
+[ext_resource type="Texture2D" uid="uid://px1x7ygvkx03" path="res://Images/Laser/Laser9-removebg-preview.png" id="10_i6q6r"]
+[ext_resource type="Texture2D" uid="uid://bixe4pn6vubsf" path="res://Images/Laser/Laser10-removebg-preview.png" id="11_vshph"]
+[ext_resource type="Texture2D" uid="uid://buac6romtdjmc" path="res://Images/Laser/Laser11-removebg-preview.png" id="12_l0ag1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7r62e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dekdl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mpln2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_prdx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ogfxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dx14c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p0edw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2waeh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_o2lbq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2t7xy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i6q6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vshph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_l0ag1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Laser" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_mpln2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -416.834)
+rotation = -1.5708
+scale = Vector2(2.74567, 1.09179)
+sprite_frames = SubResource("SpriteFrames_7r62e")
+autoplay = "default"
+frame_progress = 0.632947
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 20)
+polygon = PackedVector2Array(-40, -875.833, -50, -197.5, -69.4936, -180.296, -100.833, -45, -0.833333, -5, 98.3333, -48.3333, 69.7355, -179.728, 48.3333, -196.667, 44.1667, -875.833)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
