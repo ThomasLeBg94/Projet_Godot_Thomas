@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 300
-@export var lives = 6
+@export var lives = 3
 @export var iframe = false
 
 @export var pioupiou_level = 1
